@@ -25,11 +25,11 @@ function handlePressedKeyEvent(event) {
     // decrease the lifeline after hitting wrong key
     const updatedLife = lifeLine - 1;
     setTextById('player-life', updatedLife);
-    if(updatedLife === 0){
-      
+    if (updatedLife === 0) {
+
       gameOver();
     }
-    
+
   }
 
 }
@@ -37,26 +37,34 @@ document.addEventListener('keyup', handlePressedKeyEvent);
 
 function startGame() {
   const alphabets = getAlphabet();
-  // display the randomly generated alphabates to the screen
+  // display the randomly generated alphabet to the screen
   const screenWord = document.getElementById('display-word');
   screenWord.innerText = alphabets;
 
   // set bgcolor to the screen word
   setBgColorById(alphabets);
 }
-// Restart the game
-const restart = document.getElementById('play-again').addEventListener('click', playAgain);
 
-function gameOver(){
+
+function gameOver() {
   hideElement('playground');
   showElement('score');
+  // set final score to the scoreboard
   const finalScore = getTextElementById('player_score');
   setTextById('final-score', finalScore);
+  // clear the last selected key
+ const displayWord= getElementTextById('display-word')
+  removeBgById(displayWord);
 }
-function playAgain(){
+
+function playAgain() {
   hideElement('score');
   showElement('playground');
+  setTextById('player_score', 0)
+  setTextById('player-life', 5);
+  startGame()
 }
+
 function play() {
   hideElement('home_screen');
   showElement('playground');

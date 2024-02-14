@@ -18,6 +18,11 @@ function getAlphabet(){
   const word = alphabets[index];
   return word;
 }
+function getElementTextById(element){
+  const displayWord = document.getElementById(element);
+  const word = displayWord.innerText;
+  return word
+}
 // set background color to the highlighted alphabate
 function setBgColorById (element){
   const elementId = document.getElementById(element);
