@@ -23,3 +23,17 @@ function setBgColorById (element){
   const elementId = document.getElementById(element);
   elementId.classList.add('bg-orange-400');
 }
+function removeBgById(element){
+  const removeBg= document.getElementById(element);
+ removeBg.classList.remove('bg-orange-400')
+}
+function getTextElementById(element){
+  const getElement = document.getElementById(element);
+  const elementValue = getElement.innerText;
+  const value = parseInt(elementValue);
+return value;
+}
+function setTextById (element, value){
+  const elementId = document.getElementById(element);
+  elementId.innerText = value;
+}
