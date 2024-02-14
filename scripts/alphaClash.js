@@ -1,6 +1,10 @@
 function handlePressedKeyEvent(event) {
   // get the key which is pressed by the player
   const playerPressedKey = event.key;
+  // stop the game if player pressed 'Esc'
+  if(playerPressedKey ==='Escape'){
+    gameOver();
+  }
   // get the key which need to press the player
   const expectedKeyId = document.getElementById('display-word');
   const expectedKey = expectedKeyId.innerText;
