@@ -11,6 +11,9 @@ function handlePressedKeyEvent(event){
 
 if(playerPressedKey === exactKey){
  startGame();
+//  remove the exciting key's background color;
+ const removeBg= document.getElementById(exactKey);
+ removeBg.classList.remove('bg-orange-400')
 }
 else{
   console.log('you lost a lifeline');
