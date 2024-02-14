@@ -1,7 +1,6 @@
 function handlePressedKeyEvent(event) {
   // get the key which is pressed by the player
   const playerPressedKey = event.key;
-  console.log(playerPressedKey);
   // get the key which need to press the player
   const expectedKeyId = document.getElementById('display-word');
   const expectedKey = expectedKeyId.innerText;
@@ -10,7 +9,7 @@ function handlePressedKeyEvent(event) {
 
   if (playerPressedKey === exactKey) {
     // update score after right click
-const currentScore = getTextElementById('player_score');
+    const currentScore = getTextElementById('player_score');
     // increase the score
     const newScore = currentScore + 1;
     // updated the score
@@ -26,7 +25,13 @@ const currentScore = getTextElementById('player_score');
     // decrease the lifeline after hitting wrong key
     const updatedLife = lifeLine - 1;
     setTextById('player-life', updatedLife);
+    if(updatedLife === 0){
+      
+      gameOver();
+    }
+    
   }
+
 }
 document.addEventListener('keyup', handlePressedKeyEvent);
 
@@ -39,7 +44,19 @@ function startGame() {
   // set bgcolor to the screen word
   setBgColorById(alphabets);
 }
+// Restart the game
+const restart = document.getElementById('play-again').addEventListener('click', playAgain);
 
+function gameOver(){
+  hideElement('playground');
+  showElement('score');
+  const finalScore = getTextElementById('player_score');
+  setTextById('final-score', finalScore);
+}
+function playAgain(){
+  hideElement('score');
+  showElement('playground');
+}
 function play() {
   hideElement('home_screen');
   showElement('playground');
